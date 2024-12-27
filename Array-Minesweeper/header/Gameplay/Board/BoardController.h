@@ -13,6 +13,7 @@ namespace Gameplay
 		{
 		private:
 			BoardView* board_view;
+			Gameplay::Cell::CellController* cell_controller;
 
 			static const int number_of_rows = 9;
 			static const int number_of_colums = 9;

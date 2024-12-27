@@ -2,11 +2,24 @@
 
 namespace Gameplay
 {
-	namespace Board 
+	namespace Cell
 	{
-		namespace Cell
-		{
+		class CellView;
 
-		}
+		class CellController
+		{
+		private:
+			CellView* cell_view;
+
+			void destroy();
+
+		public:
+			CellController();
+			~CellController();
+
+			void initialize();
+			void update();
+			void render();
+		};
 	}
 }
