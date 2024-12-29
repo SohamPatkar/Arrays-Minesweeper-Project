@@ -1,5 +1,6 @@
 #pragma once
 #include "../../header/UI/UIElement/ImageView.h"
+#include <sfml/Graphics.hpp>
 #include <functional>
 
 namespace UI
@@ -30,6 +31,8 @@ namespace UI
 			virtual void initialize(sf::String title, sf::String texture_path, float button_width, float button_height, sf::Vector2f position);
 			virtual void update() override;
 			virtual void render() override;
+			
+			void setTextureRect(sf::IntRect rect);
 
 			void registerCallbackFuntion(CallbackFunction button_callback);
 		};

@@ -1,6 +1,7 @@
 #include "../../header/Gameplay/Cell/CellController.h"
 #include "../../header/Gameplay/Cell/CellView.h"
 
+
 namespace Gameplay
 {
 	namespace Cell
@@ -8,6 +9,7 @@ namespace Gameplay
 		CellController::CellController()
 		{
 			cell_view = new CellView(this);
+			cell_model = new CellModel();
 		}
 
 		CellController::~CellController()
@@ -33,6 +35,27 @@ namespace Gameplay
 		void CellController::destroy()
 		{
 			delete(cell_view);
+			delete(cell_model);
+		}
+
+		void CellController::setCellState(CellState state)
+		{
+			cell_model->setCellState(state);
+		}
+
+		void CellController::setCellValue(CellValue value)
+		{
+			cell_model->setCellValue(value);
+		}
+
+		CellState CellController::getCellState()
+		{
+			return cell_model->getCellState();
+		}
+
+		CellValue CellController::getCellValue()
+		{
+			return cell_model->getCellValue();
 		}
 	}
 }

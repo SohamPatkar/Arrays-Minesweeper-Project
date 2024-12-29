@@ -8,7 +8,7 @@ namespace Gameplay
 		BoardController::BoardController()
 		{
 			board_view = new BoardView(this);
-			cell_controller = new Cell::CellController();
+			createBoard();
 		}
 
 		BoardController::~BoardController(){}
@@ -16,6 +16,7 @@ namespace Gameplay
 
 		void BoardController::createBoard()
 		{
+			cell_controller = new Cell::CellController();
 		}
 
 		void BoardController::deleteBoard()

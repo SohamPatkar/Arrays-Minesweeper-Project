@@ -2,6 +2,7 @@
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Event/EventService.h"
 #include "../../header/Sound/SoundService.h"
+#include "../../header/Global/Config.h"
 
 namespace UI
 {
@@ -38,6 +39,11 @@ namespace UI
         void ButtonView::render()
         {
             ImageView::render();
+        }
+
+        void ButtonView::setTextureRect(sf::IntRect rect)
+        {
+            initialize("",Global::Config::cells_texture_path, rect.width, rect.height, sf::Vector2f(0, 0));
         }
 
         void ButtonView::handleButtonInteraction()
