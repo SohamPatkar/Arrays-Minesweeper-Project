@@ -30,8 +30,9 @@ namespace Gameplay
 		private:
 			BoardView* board_view;
 			Gameplay::Cell::CellController* cell_controller;
-			Gameplay::Cell::CellController* cells[number_of_colums];
+			Gameplay::Cell::CellController* cells[number_of_rows][number_of_colums];
 
+			void resetBoard();
 			void createBoard();
 			void deleteBoard();
 			void destroy();

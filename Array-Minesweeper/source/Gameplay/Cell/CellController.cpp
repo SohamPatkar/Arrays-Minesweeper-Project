@@ -6,10 +6,10 @@ namespace Gameplay
 {
 	namespace Cell
 	{
-		CellController::CellController(int cell_index)
+		CellController::CellController(sf::Vector2i position)
 		{
 			cell_view = new CellView(this);
-			cell_model = new CellModel(cell_index);
+			cell_model = new CellModel(position);
 		}
 
 		CellController::~CellController()
@@ -53,9 +53,14 @@ namespace Gameplay
 			return cell_model->getCellState();
 		}
 
-		int CellController::getCellIndex()
+		sf::Vector2i CellController::getCellPosition()
 		{
-			return cell_model->getCellIndex();
+			return cell_model->getCellPosition();
+		}
+
+		void CellController::reset()
+		{
+			cell_model->reset();
 		}
 
 		CellValue CellController::getCellValue()
