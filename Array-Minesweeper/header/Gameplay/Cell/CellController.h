@@ -17,7 +17,7 @@ namespace Gameplay
 			void destroy();
 
 		public:
-			CellController();
+			CellController(int cell_index);
 			~CellController();
 
 			CellState getCellState();
@@ -29,6 +29,8 @@ namespace Gameplay
 			void initialize(float width, float height);
 			void update();
 			void render();
+
+			int getCellIndex();
 		};
 	}
 }

@@ -10,15 +10,7 @@ namespace Gameplay
 		class BoardView;
 
 		class BoardController
-		{
-		private:
-			BoardView* board_view;
-			Gameplay::Cell::CellController* cell_controller;
-
-			void createBoard();
-			void deleteBoard();
-			void destroy();
-			
+		{	
 		public:
 			BoardController();
 			~BoardController();
@@ -34,6 +26,15 @@ namespace Gameplay
 			void initializeCells();
 
 			void reset();
+
+		private:
+			BoardView* board_view;
+			Gameplay::Cell::CellController* cell_controller;
+			Gameplay::Cell::CellController* cells[number_of_colums];
+
+			void createBoard();
+			void deleteBoard();
+			void destroy();
 		};
 	}
 }
