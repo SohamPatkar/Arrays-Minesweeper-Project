@@ -15,23 +15,23 @@ namespace Gameplay
 			BoardView* board_view;
 			Gameplay::Cell::CellController* cell_controller;
 
-			static const int number_of_rows = 9;
-			static const int number_of_colums = 9;
-			static const int mines_count = 8;
-
 			void createBoard();
 			void deleteBoard();
 			void destroy();
 			
-
 		public:
 			BoardController();
 			~BoardController();
 
+			static const int number_of_rows = 9;
+			static const int number_of_colums = 9;
+			static const int mines_count = 8;
 
 			void initialize();
 			void update();
 			void render();
+
+			void initializeCells();
 
 			void reset();
 		};

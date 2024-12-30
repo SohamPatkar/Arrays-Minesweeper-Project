@@ -1,4 +1,5 @@
 #include "../../header/Gameplay/Cell/CellModel.h"
+#include <sfml/Graphics.hpp>
 
 namespace Gameplay
 {
@@ -6,7 +7,7 @@ namespace Gameplay
 	{
 		CellModel::CellModel()
 		{
-
+			reset();
 		}
 
 		CellModel::~CellModel()
@@ -36,7 +37,7 @@ namespace Gameplay
 
 		sf::Vector2i CellModel::getCellPosition()
 		{
-			return sf::Vector2i(0, 0);
+			return position;
 		}
 
 		void CellModel::reset()

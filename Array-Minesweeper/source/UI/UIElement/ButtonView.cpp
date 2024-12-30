@@ -41,11 +41,6 @@ namespace UI
             ImageView::render();
         }
 
-        void ButtonView::setTextureRect(sf::IntRect rect)
-        {
-            initialize("",Global::Config::cells_texture_path, rect.width, rect.height, sf::Vector2f(0, 0));
-        }
-
         void ButtonView::handleButtonInteraction()
         {
             sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));

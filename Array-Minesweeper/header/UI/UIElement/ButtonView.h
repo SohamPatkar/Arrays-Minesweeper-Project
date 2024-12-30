@@ -32,8 +32,6 @@ namespace UI
 			virtual void update() override;
 			virtual void render() override;
 			
-			void setTextureRect(sf::IntRect rect);
-
 			void registerCallbackFuntion(CallbackFunction button_callback);
 		};
 	}

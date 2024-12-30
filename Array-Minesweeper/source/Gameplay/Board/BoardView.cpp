@@ -1,7 +1,7 @@
 #include "../../header/Gameplay/Board/BoardView.h"
 #include "../../header/Global/Config.h"
 #include "../../header/Global/ServiceLocator.h"
-
+#include "../../header/Gameplay/Board/BoardController.h"
 
 namespace Gameplay
 {
@@ -50,6 +50,16 @@ namespace Gameplay
 		{
 			board_image->initialize(Global::Config::board_texture_path, board_width, board_height, sf::Vector2f(0,0));
 			board_image->setCentreAlinged();
+		}
+
+		float BoardView::getCellWidth()
+		{
+			return  (board_width - board_width_offset) / static_cast<float>(BoardController::number_of_colums);
+		}
+
+		float BoardView::getCellHeight()
+		{
+			return (board_width - board_width_offset) / static_cast<float>(BoardController::number_of_rows);
 		}
 	}
 }

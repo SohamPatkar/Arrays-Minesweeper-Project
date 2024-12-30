@@ -15,6 +15,9 @@ namespace Gameplay
 			UI::UIElement::ButtonView* cell_button;
 			CellController* cell_controller;
 
+			const float cell_top_offset = 274.f;
+			const float cell_left_offset = 583.f;
+
 			const int tile_size = 32;
 			int slice_count = 12;
 
@@ -26,7 +29,9 @@ namespace Gameplay
 
 			void setCellTexture();
 
-			void initialize();
+			sf::Vector2f getCellScreenPosition();
+
+			void initialize(float cell_width, float cell_height);
 			void update();
 			void render();
 		};

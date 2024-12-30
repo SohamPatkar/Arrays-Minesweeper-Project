@@ -26,7 +26,7 @@ namespace Gameplay
 			void setCellState(CellState state);
 			void setCellValue(CellValue value);
 
-			void initialize();
+			void initialize(float width, float height);
 			void update();
 			void render();
 		};

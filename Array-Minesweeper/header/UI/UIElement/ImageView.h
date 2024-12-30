@@ -19,6 +19,8 @@ namespace UI
 			virtual void update() override;
 			virtual void render() override;
 
+			virtual void setTextureRect(sf::IntRect texture_rect);
+
 			virtual void setTexture(sf::String texture_path);
 			virtual void setScale(float width, float height);
 			virtual void setPosition(sf::Vector2f position);
