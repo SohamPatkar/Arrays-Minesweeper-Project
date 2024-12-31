@@ -15,17 +15,17 @@ namespace Gameplay
 
 	void GameplayService::initialize()
 	{
-
+		gameplay_controller->initialize();
 	}
 
 	void GameplayService::update()
 	{
-
+		gameplay_controller->update();
 	}
 
 	void GameplayService::render()
 	{
-
+		gameplay_controller->render();
 	}
 
 	void GameplayService::startGame()

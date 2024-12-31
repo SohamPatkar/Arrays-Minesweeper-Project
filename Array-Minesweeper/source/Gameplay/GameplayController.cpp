@@ -5,7 +5,7 @@ namespace Gameplay
 {
 	GameplayController::GameplayController()
 	{
-
+		board_service = nullptr;
 	}
 
 	GameplayController::~GameplayController()
@@ -15,7 +15,7 @@ namespace Gameplay
 
 	void GameplayController::initialize()
 	{
-
+		board_service = Global::ServiceLocator::getInstance()->getBoardService();
 	}
 
 	void GameplayController::update()

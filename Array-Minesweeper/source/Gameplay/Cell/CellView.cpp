@@ -2,6 +2,7 @@
 #include "../../header/UI/UIElement/ButtonView.h"
 #include "../../header/Global/Config.h"
 #include "../../header/Gameplay/Cell/CellController.h"
+#include <iostream>
 
 namespace Gameplay
 {
@@ -64,11 +65,33 @@ namespace Gameplay
 			return sf::Vector2f(x_screen_position, y_screen_position);
 		}
 
+		void CellView::registerButtonCallback()
+		{
+			cell_button->registerCallbackFuntion(std::bind(&CellView::cellButtonCallback, this, std::placeholders::_1));
+		}
+
+		void CellView::cellButtonCallback(UI::UIElement::ButtonType button_type)
+		{
+			switch (button_type)
+			{
+			case UI::UIElement::ButtonType::LEFT_MOUSE_BUTTON:
+				cell_controller->openCell();
+				break;
+			case UI::UIElement::ButtonType::RIGHT_MOUSE_BUTTON:
+				cell_controller->flagCell();
+				break;
+			case UI::UIElement::ButtonType::PRESSEDPLAY:
+				std::cout << "Pressed Play" << std::endl;
+				break;
+			}
+		}
+
 		void CellView::initializeButtonImage(float width, float height)
 		{
 			sf::Vector2f cell_screen_position = getCellScreenPosition(width, height);
 
 			cell_button->initialize("Cell",Global::Config::cells_texture_path, width*slice_count, height, cell_screen_position);
+			registerButtonCallback();
 		}
 	}
 }

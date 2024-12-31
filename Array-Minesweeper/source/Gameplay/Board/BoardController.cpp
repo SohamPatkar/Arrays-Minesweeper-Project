@@ -58,12 +58,12 @@ namespace Gameplay
 		{
 			board_view->initialize();
 			initializeCells();
-			reset();
 		}
 
 		void BoardController::update()
 		{
 			board_view->update();
+
 			for (int a = 0; a < number_of_rows; a++)
 			{
 				for (int i = 0; i < number_of_colums; i++)
@@ -76,6 +76,7 @@ namespace Gameplay
 		void BoardController::render()
 		{
 			board_view->render();
+
 			for (int a = 0; a < number_of_rows; a++)
 			{
 				for (int i = 0; i < number_of_colums; i++)
