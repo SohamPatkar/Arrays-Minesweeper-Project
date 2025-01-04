@@ -58,6 +58,7 @@ namespace Gameplay
 		{
 			board_view->initialize();
 			initializeCells();
+			reset();
 		}
 
 		void BoardController::update()
@@ -100,6 +101,10 @@ namespace Gameplay
 			}
 		}
 
+		int BoardController::getMineCount()
+		{
+			return mines_count;
+		}
 
 	}
 }

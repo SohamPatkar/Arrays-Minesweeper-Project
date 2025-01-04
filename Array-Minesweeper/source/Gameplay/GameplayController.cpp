@@ -34,6 +34,11 @@ namespace Gameplay
 		Global::ServiceLocator::getInstance()->getBoardService()->resetBoard();
 	}
 
+	int GameplayController::getMineCount()
+	{
+		return board_service->getMineCount();
+	}
+
 	void GameplayController::updateRemainingTime()
 	{
 		remaining_time -= Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();

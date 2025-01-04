@@ -17,6 +17,7 @@ namespace Gameplay
 		void render();
 
 		float getRemainingTime();
+		int getMineCount();
 
 		void startGame();
 		void reset();

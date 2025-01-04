@@ -7,7 +7,7 @@ namespace Gameplay
 	{
 		BoardService::BoardService()
 		{
-			board_controller = new BoardController();
+			board_controller = nullptr;
 		}
 
 		BoardService::~BoardService()
@@ -17,6 +17,7 @@ namespace Gameplay
 
 		void BoardService::initialize()
 		{
+			board_controller = new BoardController();
 			board_controller->initialize();
 		}
 
@@ -33,6 +34,11 @@ namespace Gameplay
 		void BoardService::resetBoard()
 		{
 			board_controller->reset();
+		}
+
+		int BoardService::getMineCount()
+		{
+			return board_controller->getMineCount();
 		}
 	}
 }

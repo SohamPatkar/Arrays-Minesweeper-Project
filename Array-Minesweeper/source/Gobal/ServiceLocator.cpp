@@ -42,8 +42,8 @@ namespace Global
 		event_service->initialize();
 		ui_service->initialize();
 		gameplay_service->initialize();
-		board_service->initialize();
 		time_service->initialize();
+		board_service->initialize();
 	}
 
 	void ServiceLocator::update()
@@ -54,6 +54,7 @@ namespace Global
 		time_service->update();
 		if (GameService::getGameState() == GameState::GAMEPLAY)
 		{
+			
 			gameplay_service->update();
 			board_service->update();
 		}	

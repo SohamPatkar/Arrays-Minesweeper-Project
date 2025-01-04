@@ -37,4 +37,9 @@ namespace Gameplay
 	{
 		return gameplay_controller->getRemainingTime();
 	}
+
+	int GameplayService::getMineCount()
+	{
+		return gameplay_controller->getMineCount();
+	}
 }

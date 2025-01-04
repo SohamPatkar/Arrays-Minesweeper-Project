@@ -7,8 +7,8 @@ namespace Gameplay
 	{
 		CellModel::CellModel(sf::Vector2i position)
 		{
-			this->position = position;
 			reset();
+			this->position = position;
 		}
 
 		CellModel::~CellModel()
