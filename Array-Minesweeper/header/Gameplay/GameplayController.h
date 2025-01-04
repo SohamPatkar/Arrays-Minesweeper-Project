@@ -8,6 +8,11 @@ namespace Gameplay
 	private:
 		Board::BoardService* board_service;
 
+		float Max_Duration = 10.f;
+		float remaining_time;
+
+		void updateRemainingTime();
+		
 	public:
 		GameplayController();
 		~GameplayController();
@@ -16,6 +21,7 @@ namespace Gameplay
 		void update();
 		void render();
 
-		void reset();
+		float getRemainingTime();
+		void restart();
 	};
 }

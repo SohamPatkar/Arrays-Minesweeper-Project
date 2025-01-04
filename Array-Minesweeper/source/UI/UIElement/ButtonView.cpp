@@ -46,16 +46,6 @@ namespace UI
         {
             sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
 
-            if (clickedLeftMouseButton(&image_sprite, mouse_position) && Main::GameService::getGameState() == Main::GameState::MAIN_MENU)
-            {
-                if (callback_function)
-                {
-                    callback_function(ButtonType::PRESSEDPLAY);
-                }            
-            }
-
-            if (Main::GameService::getGameState() == Main::GameState::GAMEPLAY)
-            {
                 if (clickedLeftMouseButton(&image_sprite, mouse_position))
                 {
                     if (callback_function)
@@ -69,8 +59,7 @@ namespace UI
                     {
                         callback_function(ButtonType::RIGHT_MOUSE_BUTTON);
                     }
-                }
-            }   
+                }     
         }
 
         bool ButtonView::clickedRightMouseButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
