@@ -93,7 +93,7 @@
     <ClCompile Include="source\Time\TimeService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\UI\Gameplay\GameplayUIController.cpp">
+    <ClCompile Include="source\UI\GameplayUI\GameplayUIController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -173,7 +173,7 @@
     <ClInclude Include="header\Gameplay\Cell\CellModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\UI\Gameplay\GameplayUIController.h">
+    <ClInclude Include="header\UI\GameplayUI\GameplayUIController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\Time\TimeService.h">

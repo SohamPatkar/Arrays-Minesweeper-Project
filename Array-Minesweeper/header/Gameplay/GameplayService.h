@@ -8,6 +8,7 @@ namespace Gameplay
 	{
 	private:
 		GameplayController* gameplay_controller;
+
 	public:
 		GameplayService();
 		~GameplayService();
