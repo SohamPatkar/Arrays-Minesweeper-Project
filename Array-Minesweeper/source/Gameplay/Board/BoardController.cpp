@@ -104,6 +104,22 @@ namespace Gameplay
 			}
 		}
 
+		void BoardController::openAllCells()
+		{
+			if (board_state == BoardState::FIRST_CELL)
+			{
+				populateBoard(sf::Vector2i(0, 0));
+			}
+
+			for (int a = 0; a < number_of_rows; ++a)
+			{
+				for (int b = 0; b < number_of_colums; ++b)
+				{
+					cells[a][b]->openCell();
+				}
+			}
+		}
+
 		void BoardController::openCell(sf::Vector2i cell_position)
 		{
 			if (cells[cell_position.x][cell_position.y]->canOpenCell())
