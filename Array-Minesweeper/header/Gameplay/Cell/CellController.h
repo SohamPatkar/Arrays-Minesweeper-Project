@@ -35,6 +35,7 @@ namespace Gameplay
 			void reset();
 
 			sf::Vector2i getCellPosition();
+			bool canOpenCell();
 		};
 	}
 }

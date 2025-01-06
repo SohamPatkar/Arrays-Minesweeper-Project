@@ -19,6 +19,7 @@ namespace UI
 		{
 			time_text = new UI::UIElement::TextView();
 			mine_text = new UI::UIElement::TextView();
+
 		}
 
 		void GameplayUIController::createButton()
@@ -28,6 +29,7 @@ namespace UI
 
 		void GameplayUIController::initialize()
 		{
+			initializeButton();
 			initializeTexts();
 		}
 

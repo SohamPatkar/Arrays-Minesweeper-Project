@@ -1,6 +1,7 @@
 #include "../../header/Gameplay/Board/BoardController.h"
 #include "../../header/Gameplay/Board/BoardView.h"
 #include "../../header/Gameplay/Cell/CellController.h"
+#include "../../header/Global/ServiceLocator.h"
 
 namespace Gameplay
 {
@@ -24,7 +25,6 @@ namespace Gameplay
 					cells[a][i] = new Cell::CellController(sf::Vector2i(a,i)); //Passing Cell Index in Cell Controller's constructor
 				}
 			}
-			
 		}
 
 		void BoardController::deleteBoard()
@@ -41,6 +41,8 @@ namespace Gameplay
 		void BoardController::reset()
 		{
 			resetBoard();
+
+			flagged_cells = 0;
 		}
 
 		void BoardController::resetBoard()
@@ -101,10 +103,47 @@ namespace Gameplay
 			}
 		}
 
-		int BoardController::getMineCount()
+		void BoardController::openCell(sf::Vector2i cell_position)
 		{
-			return mines_count;
+			if (cells[cell_position.x][cell_position.y]->canOpenCell())
+			{
+				cells[cell_position.x][cell_position.y]->openCell();
+			}
 		}
 
+		int BoardController::getMineCount()
+		{
+			return mines_count - flagged_cells;
+		}
+
+		void BoardController::processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type)
+		{
+			switch (button_type)
+			{
+			case UI::UIElement::ButtonType::LEFT_MOUSE_BUTTON:
+				openCell(cell_controller->getCellPosition());
+				break;
+			case UI::UIElement::ButtonType::RIGHT_MOUSE_BUTTON:
+				flagCell(cell_controller->getCellPosition());
+				break;
+			}
+		}
+
+		void BoardController::flagCell(sf::Vector2i cell_position)
+		{
+			switch (cells[cell_position.x][cell_position.y]->getCellState())
+			{
+			case::Gameplay::Cell::CellState::FLAGGED:
+				Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::FLAG);
+				flagged_cells--; //Used to update Gameplay UI
+				break;
+			case::Gameplay::Cell::CellState::HIDDEN:
+				Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::FLAG);
+				flagged_cells++; //Used to update Gameplay UI
+				break;
+			}
+
+			cells[cell_position.x][cell_position.y]->flagCell();
+		}
 	}
 }

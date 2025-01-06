@@ -2,6 +2,7 @@
 #include "../../header/UI/UIElement/ButtonView.h"
 #include "../../header/Global/Config.h"
 #include "../../header/Gameplay/Cell/CellController.h"
+#include "../../header/Global/ServiceLocator.h"
 #include <iostream>
 
 namespace Gameplay
@@ -72,18 +73,7 @@ namespace Gameplay
 
 		void CellView::cellButtonCallback(UI::UIElement::ButtonType button_type)
 		{
-			switch (button_type)
-			{
-			case UI::UIElement::ButtonType::LEFT_MOUSE_BUTTON:
-				cell_controller->openCell();
-				break;
-			case UI::UIElement::ButtonType::RIGHT_MOUSE_BUTTON:
-				cell_controller->flagCell();
-				break;
-			case UI::UIElement::ButtonType::PRESSEDPLAY:
-				std::cout << "Pressed Play" << std::endl;
-				break;
-			}
+			Global::ServiceLocator::getInstance()->getBoardService()->processCellInput(cell_controller, button_type);
 		}
 
 		void CellView::initializeButtonImage(float width, float height)
