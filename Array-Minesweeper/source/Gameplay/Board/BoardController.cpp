@@ -22,7 +22,7 @@ namespace Gameplay
 			{
 				for (int i = 0; i < number_of_colums; i++)
 				{
-					cells[a][i] = new Cell::CellController(sf::Vector2i(a,i)); //Passing Cell Index in Cell Controller's constructor
+					cells[a][i] = new Cell::CellController(sf::Vector2i(a,i));
 				}
 			}
 		}
@@ -130,6 +130,7 @@ namespace Gameplay
 					board_state = BoardState::PLAYING;
 				}
 
+				processValue(cell_position);
 				cells[cell_position.x][cell_position.y]->openCell();
 			}
 		}
@@ -152,6 +153,22 @@ namespace Gameplay
 			populateCells();
 		}
 
+		void BoardController::processValue(sf::Vector2i cell_position)
+		{
+			switch (cells[cell_position.x][cell_position.y]->getCellValue())
+			{
+			case::Gameplay::Cell::CellValue::EMPTY:
+				//processEmptyCell(cell_position); Yet to implement
+				break;
+			case::Gameplay::Cell::CellValue::MINE:
+				//processMineCell(cell_position); Yet to implement
+				break;
+			default:
+				Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+				break;
+			}
+		}
+
 		int BoardController::countMinesAround(sf::Vector2i cell_position)
 		{
 			int mines_around = 0;
@@ -160,7 +177,6 @@ namespace Gameplay
 			{
 				for (int b = -1; b < 2; b++)
 				{
-					//If its the current cell, or cell position is not valid, then the loop will skip once
 					if ((a == 0 && b == 0) || !isValidCellPosition(sf::Vector2i(cell_position.x + a, cell_position.y + b))) continue;
 
 					if (cells[a + cell_position.x][b + cell_position.y]->getCellValue() == Cell::CellValue::MINE) mines_around++;
@@ -214,11 +230,11 @@ namespace Gameplay
 			{
 			case::Gameplay::Cell::CellState::FLAGGED:
 				Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::FLAG);
-				flagged_cells--; //Used to update Gameplay UI
+				flagged_cells--; 
 				break;
 			case::Gameplay::Cell::CellState::HIDDEN:
 				Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::FLAG);
-				flagged_cells++; //Used to update Gameplay UI
+				flagged_cells++; 
 				break;
 			}
 

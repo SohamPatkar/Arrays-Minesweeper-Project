@@ -37,6 +37,7 @@ namespace Gameplay
 			void processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type);
 			void flagCell(sf::Vector2i cell_position);
 			void populateBoard(sf::Vector2i cell_position);
+			void processValue(sf::Vector2i cell_position);
 			int countMinesAround(sf::Vector2i cell_position);
 			bool isValidCellPosition(sf::Vector2i cell_position);
 
