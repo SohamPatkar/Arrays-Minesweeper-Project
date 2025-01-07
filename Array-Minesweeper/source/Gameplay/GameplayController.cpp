@@ -60,7 +60,10 @@ namespace Gameplay
 
 	void GameplayController::gameWon()
 	{
-
+		game_result = GameResult::WON;
+		board_service->flagAllMines();
+		board_service->setBoardState(Board::BoardState::COMPLETED);
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
 	}
 
 	void GameplayController::gameLost()

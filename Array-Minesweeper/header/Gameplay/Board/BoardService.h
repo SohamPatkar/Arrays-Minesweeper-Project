@@ -24,6 +24,7 @@ namespace Gameplay
 
 			void showBoard();
 			int getMineCount();
+			void flagAllMines();
 			void setBoardState(BoardState state);
 			BoardState getBoardState();
 
