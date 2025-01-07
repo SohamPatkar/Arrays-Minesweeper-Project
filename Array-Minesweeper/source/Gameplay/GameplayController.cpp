@@ -1,6 +1,7 @@
 #include "../../header/Gameplay/GameplayController.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Main/GameService.h"
+#include "../../header/Gameplay/Board/BoardController.h"
 
 namespace Gameplay
 {
@@ -22,6 +23,10 @@ namespace Gameplay
 	void GameplayController::update()
 	{
 		updateRemainingTime();
+		if (isTimeOver())
+		{
+			endGame(GameResult::LOST);
+		}
 	}
 
 	void GameplayController::render()
@@ -65,12 +70,17 @@ namespace Gameplay
 			game_result = GameResult::LOST;
 			beginGameOverTime();
 			board_service->showBoard();
-			board_service->setBoardState(BoardState::COMPLETED);
+			board_service->setBoardState(Board::BoardState::COMPLETED);
 		}
 		else
 		{
 			showCredits();
 		}
+	}
+
+	bool GameplayController::isTimeOver()
+	{
+		return remaining_time <= 1;
 	}
 
 	void GameplayController::restart()

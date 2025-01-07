@@ -18,7 +18,7 @@ namespace Gameplay
 		
 		const float game_over_time = 11.f;
 
-		float Max_Duration = 10.f;
+		float Max_Duration = 25.f;
 		float remaining_time;
 
 		void updateRemainingTime();
@@ -33,6 +33,7 @@ namespace Gameplay
 
 		void showCredits();
 		void beginGameOverTime();
+		bool isTimeOver();
 		void endGame(GameResult result);
 		void gameWon();
 		void gameLost();
