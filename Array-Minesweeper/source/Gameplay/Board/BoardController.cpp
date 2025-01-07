@@ -130,7 +130,7 @@ namespace Gameplay
 					board_state = BoardState::PLAYING;
 				}
 
-				processValue(cell_position);
+				processCellValue(cell_position);
 				cells[cell_position.x][cell_position.y]->openCell();
 			}
 		}
@@ -153,12 +153,12 @@ namespace Gameplay
 			populateCells();
 		}
 
-		void BoardController::processValue(sf::Vector2i cell_position)
+		void BoardController::processCellValue(sf::Vector2i cell_position)
 		{
 			switch (cells[cell_position.x][cell_position.y]->getCellValue())
 			{
 			case::Gameplay::Cell::CellValue::EMPTY:
-				//processEmptyCell(cell_position); Yet to implement
+				processEmptycell(cell_position);
 				break;
 			case::Gameplay::Cell::CellValue::MINE:
 				//processMineCell(cell_position); Yet to implement
@@ -166,6 +166,40 @@ namespace Gameplay
 			default:
 				Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
 				break;
+			}
+		}
+
+		void BoardController::processEmptycell(sf::Vector2i cell_position)
+		{
+			Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+			openEmptyCells(cell_position);
+		}
+
+		void BoardController::openEmptyCells(sf::Vector2i cell_position)
+		{
+			switch (cells[cell_position.x][cell_position.y]->getCellState())
+			{
+
+			case::Gameplay::Cell::CellState::OPEN:
+				return;
+
+			case::Gameplay::Cell::CellState::FLAGGED:
+				flagged_cells--;
+			
+			default:
+				cells[cell_position.x][cell_position.y]->openCell();
+			}
+
+			for (int a = -1; a < 2; a++)
+			{
+				for (int b = -1; b < 2; b++)
+				{
+					if ((a == 0 && b == 0) || !isValidCellPosition(sf::Vector2i(a + cell_position.x, b + cell_position.y)))
+						continue;
+
+					sf::Vector2i next_cell_position = sf::Vector2i(a + cell_position.x, b + cell_position.y);
+					openCell(next_cell_position);
+				}
 			}
 		}
 
