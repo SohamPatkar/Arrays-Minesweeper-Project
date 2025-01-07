@@ -3,6 +3,7 @@
 namespace Gameplay
 {
 	class GameplayController;
+	enum class GameResult;
 
 	class GameplayService
 	{
@@ -20,6 +21,7 @@ namespace Gameplay
 		float getRemainingTime();
 		int getMineCount();
 
+		void endGame(GameResult result);
 		void startGame();
 		void reset();
 	};

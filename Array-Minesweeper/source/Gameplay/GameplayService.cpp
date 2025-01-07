@@ -38,6 +38,11 @@ namespace Gameplay
 		return gameplay_controller->getRemainingTime();
 	}
 
+	void GameplayService::endGame(GameResult result)
+	{
+		gameplay_controller->endGame(result);
+	}
+
 	int GameplayService::getMineCount()
 	{
 		return gameplay_controller->getMineCount();

@@ -45,5 +45,20 @@ namespace Gameplay
 		{
 			return board_controller->getMineCount();
 		}
+
+		void BoardService::showBoard()
+		{
+			board_controller->showBoard();
+		}
+
+		void BoardService::setBoardState(BoardState state)
+		{
+			board_controller->setBoardState(state);
+		}
+
+		BoardState BoardService::getBoardState()
+		{
+			return board_controller->getBoardState();
+		}
 	}
 }

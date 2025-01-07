@@ -1,5 +1,6 @@
 #include "../../header/Gameplay/GameplayController.h"
 #include "../../header/Global/ServiceLocator.h"
+#include "../../header/Main/GameService.h"
 
 namespace Gameplay
 {
@@ -28,6 +29,50 @@ namespace Gameplay
 
 	}
 
+	void GameplayController::beginGameOverTime()
+	{
+		remaining_time = game_over_time;
+	}
+
+	void GameplayController::endGame(GameResult result)
+	{
+		switch (result)
+		{
+			
+		case GameResult::WON:
+			gameWon();
+			break;
+		
+		case GameResult::LOST:
+			gameLost();
+			break;
+			
+		default:
+			
+			break;
+		}
+	}
+
+	void GameplayController::gameWon()
+	{
+
+	}
+
+	void GameplayController::gameLost()
+	{
+		if (game_result == GameResult::NONE)
+		{
+			game_result = GameResult::LOST;
+			beginGameOverTime();
+			board_service->showBoard();
+			board_service->setBoardState(BoardState::COMPLETED);
+		}
+		else
+		{
+			showCredits();
+		}
+	}
+
 	void GameplayController::restart()
 	{
 		remaining_time = Max_Duration;
@@ -47,5 +92,10 @@ namespace Gameplay
 	float GameplayController::getRemainingTime()
 	{
 		return remaining_time;
+	}
+
+	void GameplayController::showCredits()
+	{
+		Main::GameService::setGameState(Main::GameState::CREDITS);
 	}
 }
