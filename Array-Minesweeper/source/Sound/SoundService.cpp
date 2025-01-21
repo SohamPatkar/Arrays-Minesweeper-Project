@@ -30,6 +30,11 @@ namespace Sound
 		case SoundType::BUTTON_CLICK:
 			sound_effect.setBuffer(buffer_button_click);
 			break;
+
+		case SoundType::FLAG:
+			sound_effect.setBuffer(buffer_button_click);
+			break;
+
 		default:
 			printf("Invalid sound type");
 			return;
